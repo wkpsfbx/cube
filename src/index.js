@@ -59,7 +59,7 @@ document.querySelectorAll(".cube").forEach(cube => {
         inertiaX = +(inertiaX * 0.95).toFixed(2);
         inertiaY = +(inertiaY * 0.95).toFixed(2);
 
-        angle = +(Math.hypot(inertiaX, inertiaY) * 0.2).toFixed(2)
+        angle = +(Math.hypot(inertiaX, inertiaY) * 0.1).toFixed(2)
     }, 48);
 
     cube.addEventListener("mousedown", lock);
