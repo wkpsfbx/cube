@@ -5,12 +5,13 @@ const getE = e => (e.touches ? e.touches[0] : e);
 document.querySelectorAll(".cube").forEach(cube => {
     const sides = cube.querySelector(".sides");
 
-    cube.ondragstart = () => false
-
-    sides.style.transform = `rotate3d(1, 1, 0, 35deg)  `
+    cube.ondragstart = () => false;
 
     let x0 = null,
         y0 = null,
+        inertiaX = 0,
+        inertiaY = 0,
+        angle = 0,
         drag = false;
 
     const lock = ev => {
@@ -35,18 +36,31 @@ document.querySelectorAll(".cube").forEach(cube => {
             x = e.clientX,
             y = e.clientY,
             dx = x - x0,
-            dy = y - y0,
-            d = Math.hypot(dx, dy);
+            dy = y - y0;
 
-        let prev = getComputedStyle(sides).transform.replace("none", "");
-
-        if (d) {
-            sides.style.transform = `rotate3d(${+(-dy).toFixed(2)}, ${+dx.toFixed(2)}, 0, ${+(d * 0.2).toFixed(2)}deg) ${prev}`;
+        if (dx && dy) {
+            inertiaX += dx;
+            inertiaY += dy;
 
             x0 = x;
             y0 = y;
         }
     };
+
+    // transform to new position
+    setInterval(() => {
+        let prev = getComputedStyle(sides).transform.replace("none", "");
+
+        sides.style.transform = `rotate3d(${-inertiaY}, ${inertiaX}, 0, ${angle}deg) ${prev}`;
+    }, 16);
+
+    /* Update inertia & angle */
+    setInterval(() => {
+        inertiaX = +(inertiaX * 0.95).toFixed(2);
+        inertiaY = +(inertiaY * 0.95).toFixed(2);
+
+        angle = +(Math.hypot(inertiaX, inertiaY) * 0.2).toFixed(2)
+    }, 100);
 
     cube.addEventListener("mousedown", lock);
     cube.addEventListener("touchstart", lock);
