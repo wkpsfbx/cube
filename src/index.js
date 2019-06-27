@@ -60,7 +60,7 @@ document.querySelectorAll(".cube").forEach(cube => {
         inertiaY = +(inertiaY * 0.95).toFixed(2);
 
         angle = +(Math.hypot(inertiaX, inertiaY) * 0.2).toFixed(2)
-    }, 100);
+    }, 48);
 
     cube.addEventListener("mousedown", lock);
     cube.addEventListener("touchstart", lock);
