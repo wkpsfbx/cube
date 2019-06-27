@@ -1,4 +1,3 @@
-
 body {
     box-sizing: border-box;
     margin: 0;
@@ -6,7 +5,7 @@ body {
 
     font-family: sans-serif;
 
-    background-image: linear-gradient(to right top, #d051e5, #d953e3, #e155e1, #e958df, #f05bdd);
+    background-image: linear-gradient(to right top, #e78feb, #e89cee, #e9a8f1, #eab3f4, #ecbff6);
 }
 
 .container {
@@ -43,6 +42,9 @@ body {
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
+
+    background-image: radial-gradient(circle, #78d6ff, #8ad5ff, #9bd4ff, #aad4ff, #b7d3ff) !important;
+    border: 2px solid #222;
 }
 
 .front {
@@ -50,7 +52,7 @@ body {
     transform: rotateY(0deg) translateZ(100px);
 }
 .back {
-    background-image: linear-gradient(to right top, #3161aa, #5561c2, #845ad2, #b747d7, #eb12cf);
+    background-image: linear-gradient(to right top, #78d6ff, #77e4eb, #9dedd0, #cff1ba, #fff0b7);
     transform: rotateY(-180deg) translateZ(100px);
 }
 .left {
