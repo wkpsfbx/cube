@@ -25,7 +25,6 @@ body {
 }
 
 .sides {
-    color: whitesmoke;
     user-select: none;
     font-size: 1.1rem;
     transform-style: preserve-3d;
@@ -48,26 +47,20 @@ body {
 }
 
 .front {
-    background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
     transform: rotateY(0deg) translateZ(100px);
 }
 .back {
-    background-image: linear-gradient(to right top, #78d6ff, #77e4eb, #9dedd0, #cff1ba, #fff0b7);
     transform: rotateY(-180deg) translateZ(100px);
 }
 .left {
-    background-image: linear-gradient(to right top, #cb34aa, #f9407d, #ff6e54, #f79f39, #d8cb47);
     transform: rotateY(-90deg) translateZ(100px);
 }
 .right {
-    background-image: linear-gradient(to right top, #76cb34, #59d164, #3fd58b, #34d7ac, #47d8c5);
     transform: rotateY(90deg) translateZ(100px);
 }
 .top {
-    background-image: linear-gradient(to right top, #34cbaa, #79c071, #afae47, #db9441, #f97662);
     transform: rotateX(90deg) translateZ(100px);
 }
 .bottom {
-    background-image: linear-gradient(to right top, #cb346f, #e46146, #d99929, #b1cd47, #62f99d);
     transform: rotateX(-90deg) translateZ(100px);
 }

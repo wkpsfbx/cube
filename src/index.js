@@ -48,18 +48,17 @@ document.querySelectorAll(".cube").forEach(cube => {
     };
 
     // transform to new position
-    setInterval(() => {
-        let prev = getComputedStyle(sides).transform.replace("none", "");
-
-        sides.style.transform = `rotate3d(${-inertiaY}, ${inertiaX}, 0, ${angle}deg) ${prev}`;
-    }, 16);
+    setInterval(
+        () => (sides.style.transform = `rotate3d(${-inertiaY}, ${inertiaX}, 0, ${angle}deg) ${getComputedStyle(sides).transform.replace("none", "")}`),
+        16
+    );
 
     /* Update inertia & angle */
     setInterval(() => {
         inertiaX = +(inertiaX * 0.95).toFixed(2);
         inertiaY = +(inertiaY * 0.95).toFixed(2);
 
-        angle = +(Math.hypot(inertiaX, inertiaY) * 0.1).toFixed(2)
+        angle = +(Math.hypot(inertiaX, inertiaY) * 0.1).toFixed(2);
     }, 48);
 
     cube.addEventListener("mousedown", lock);
