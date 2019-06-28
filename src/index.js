@@ -50,7 +50,6 @@ document.querySelectorAll(".cube").forEach(cube => {
     // transform to new position
     setInterval(() => {
         console.log(inertiaX, inertiaY)
-        //if (inertiaX < 0.001 || inertiaY < 0.001) return;
 
         sides.style.transform = `rotate3d(${-inertiaY}, ${inertiaX}, 0, ${angle}deg) ${getComputedStyle(sides).transform.replace("none", "")}`;
     }, 16);
