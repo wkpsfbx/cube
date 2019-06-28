@@ -9,8 +9,8 @@ document.querySelectorAll(".cube").forEach(cube => {
 
     let x0 = null,
         y0 = null,
-        inertiaX = 0,
-        inertiaY = 0,
+        inertiaX = -10,
+        inertiaY = 10,
         angle = 0,
         drag = false;
 
