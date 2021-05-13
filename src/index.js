@@ -1,8 +1,8 @@
 import "./style.css";
 
-const getE = e => (e.touches ? e.touches[0] : e);
+const getE = (e) => (e.touches ? e.touches[0] : e);
 
-document.querySelectorAll(".cube").forEach(cube => {
+document.querySelectorAll(".cube").forEach((cube) => {
     const sides = cube.querySelector(".sides");
 
     cube.ondragstart = () => false;
@@ -15,7 +15,7 @@ document.querySelectorAll(".cube").forEach(cube => {
         drag = false,
         updateCycle = 0;
 
-    const lock = ev => {
+    const lock = (ev) => {
         let e = getE(ev);
 
         drag = true;
@@ -30,7 +30,9 @@ document.querySelectorAll(".cube").forEach(cube => {
         x0 = y0 = null;
     };
 
-    const rotate = ev => {
+    const rotate = (ev) => {
+        ev.preventDefault();
+
         if (!drag) return;
 
         let e = getE(ev),
@@ -51,18 +53,20 @@ document.querySelectorAll(".cube").forEach(cube => {
     // transform to new position
     setInterval(() => {
         sides.style.transform = `rotate3d(${-inertiaY}, ${inertiaX}, 0, ${angle}deg) ${getComputedStyle(sides).transform.replace("none", "")}`;
-        
-        if (updateCycle >= 3) { // recalculate every 4th frame
+
+        // recalculate every 4th frame
+        if (updateCycle >= 3) {
             inertiaX = +(inertiaX * 0.97).toFixed(2);
             inertiaY = +(inertiaY * 0.97).toFixed(2);
 
             angle = +(Math.hypot(inertiaX, inertiaY) * 0.1).toFixed(2);
-            
-            updateCycle = 0
-            return
+
+            updateCycle = 0;
+
+            return;
         }
-        
-        updateCycle++
+
+        updateCycle++;
     }, 16);
 
     cube.addEventListener("mousedown", lock);
